@@ -117,4 +117,3 @@ FLASK_ENV=production
 ## 🧑‍💻 Autor
 
 Desarrollado por **Marían** 🧡  
-Contacto: [tuemail@example.com]
