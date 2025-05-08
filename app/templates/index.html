@@ -3,14 +3,34 @@
 {% block title %}Inicio - Recetas{% endblock %}
 
 {% block content %}
-  <h2>Últimas Recetas</h2>
+<h2 class="center-title">CATEGORÍAS</h2>
+  <div class="category-buttons">
+    {% for cat in categories %}
+      <a href="{{ url_for('main.category', cat_id=cat.id) }}">
+        <button class="category-button">{{ cat.name }}</button>
+      </a>
+    {% endfor %}
+  </div>
+
+  <h2 class="center-title">ÚLTIMAS RECETAS</h2>
   {% for receta in recipes %}
     <div class="card">
       <h3>{{ receta.title }}</h3>
-      <p><strong>Categoría:</strong> <a href="{{ url_for('main.category', cat_id=receta.category.id) }}">{{ receta.category.name }}</a></p>
+
+      {% if receta.image %}
+        <img src="{{ url_for('static', filename='uploads/' ~ receta.image) }}" alt="Imagen de receta" class="recipe-image" />
+      {% endif %}
+
+      <p><strong>Categoría:</strong> 
+        <a href="{{ url_for('main.category', cat_id=receta.category.id) }}">{{ receta.category.name }}</a>
+      </p>
+
       <p><strong>Ingredientes:</strong> {{ receta.ingredients }}</p>
       <p><strong>Preparación:</strong> {{ receta.preparation }}</p>
-      <p><a href="{{ url_for('main.delete_recipe', recipe_id=receta.id) }}">🗑️ Eliminar</a></p>
+
+      {% if receta.author == current_user %}
+        <p><a href="{{ url_for('main.delete_recipe', recipe_id=receta.id) }}">🗑️ Eliminar</a></p>
+      {% endif %}
     </div>
   {% else %}
     <p>No hay recetas aún. ¡Agrega una!</p>

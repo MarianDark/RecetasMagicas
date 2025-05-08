@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileAllowed, FileField
 from wtforms import StringField, TextAreaField, SelectField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, Email, EqualTo
 
@@ -8,6 +9,7 @@ class RecipeForm(FlaskForm):
     ingredients = TextAreaField('Ingredientes', validators=[DataRequired()])
     preparation = TextAreaField('Preparación', validators=[DataRequired()])
     category = SelectField('Categoría', coerce=int)
+    image = FileField('Imagen', validators=[FileAllowed(['jpg', 'png', 'jpeg'], 'Solo imágenes.')])
     submit = SubmitField('Guardar')
 
 # Formulario de registro
