@@ -108,7 +108,7 @@ FLASK_ENV=production
 
 ## 📷 Capturas
 
-![Captura del proyecto](assets/screenshot_1.jpg)
+![Captura del proyecto](assets/Screenshot_1.jpg)
 
 > (Aquí puedes agregar capturas si lo deseas más adelante)
 
