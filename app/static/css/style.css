@@ -2,7 +2,7 @@
 body {
     font-family: 'Segoe UI', sans-serif;
     background-color: #f7f5f2;
-    color: #333;
+    color: #010101;
     margin: 0;
     padding: 0;
   }
@@ -12,6 +12,9 @@ body {
     color: white;
     padding: 1rem;
     text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;  
+    
   }
   
   .container {
@@ -21,7 +24,7 @@ body {
   }
   
   a {
-    color: #fa824c;
+    color: #060505;
     text-decoration: none;
   }
   
@@ -34,7 +37,7 @@ body {
   }
   
   button {
-    background: #fa824c;
+    background: #090909;
     color: white;
     padding: 0.5rem 1rem;
     border: none;
@@ -44,7 +47,7 @@ body {
   }
   
   button:hover {
-    background: #e96a2d;
+    background: #050505;
   }
   
   /* Formulario */
@@ -60,6 +63,27 @@ body {
     border-radius: 4px;
     border: 1px solid #ccc;
   }
+
+  .password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-input {
+    width: 100%;
+    padding-right: 2rem;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 1.2rem;
+  }
+  
   
   /* Responsive: tablets y móviles */
   @media (max-width: 768px) {

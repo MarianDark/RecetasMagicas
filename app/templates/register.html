@@ -14,10 +14,16 @@
   {{ form.email() }}
 
   <label>{{ form.password.label }}</label>
-  {{ form.password() }}
+  <div class="password-wrapper">
+    {{ form.password(class_="password-input") }}
+    <span class="toggle-password" onclick="togglePassword(this)">👁️</span>
+  </div>
 
   <label>{{ form.confirm.label }}</label>
-  {{ form.confirm() }}
+  <div class="password-wrapper">
+    {{ form.confirm(class_="password-input") }}
+    <span class="toggle-password" onclick="togglePassword(this)">👁️</span>
+  </div>
 
   {{ form.submit(class_='button') }}
 </form>
