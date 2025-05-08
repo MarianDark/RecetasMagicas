@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block content %}
+  <h2>Recetas de {{ category.name }}</h2>
+  {% for receta in category.recipes %}
+    <div class="card">
+      <h3>{{ receta.title }}</h3>
+      <p><strong>Ingredientes:</strong> {{ receta.ingredients }}</p>
+      <p><strong>Preparación:</strong> {{ receta.preparation }}</p>
+    </div>
+  {% else %}
+    <p>No hay recetas en esta categoría.</p>
+  {% endfor %}
+{% endblock %}

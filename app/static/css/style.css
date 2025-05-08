@@ -1,0 +1,105 @@
+/* Estilo base */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7f5f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header, footer {
+    background-color: #fa824c;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+  }
+  
+  a {
+    color: #fa824c;
+    text-decoration: none;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  button {
+    background: #fa824c;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background: #e96a2d;
+  }
+  
+  /* Formulario */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  input, textarea, select {
+    padding: 0.6rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Responsive: tablets y móviles */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem;
+    }
+  
+    header, footer {
+      font-size: 1rem;
+    }
+  
+    button {
+      width: 100%;
+    }
+  
+    .card {
+      padding: 0.8rem;
+    }
+  
+    input, textarea, select {
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header, footer {
+      padding: 0.8rem;
+    }
+  
+    .container {
+      padding: 1rem 0.5rem;
+    }
+  
+    button {
+      font-size: 1rem;
+      padding: 0.8rem;
+    }
+  
+    input, textarea, select {
+      font-size: 0.9rem;
+    }
+  }
+  
