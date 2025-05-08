@@ -12,7 +12,7 @@ bp = Blueprint('main', __name__)
 @bp.route('/')
 def index():
     recipes = Recipe.query.all()
-    categories = Category.query.all()  # ⬅️ Esto permite mostrar los botones
+    categories = Category.query.all()
     return render_template('index.html', recipes=recipes, categories=categories)
 
 @bp.route('/add', methods=['GET', 'POST'])
@@ -42,6 +42,34 @@ def add_recipe():
 
     return render_template('add_recipe.html', form=form)
 
+@bp.route('/edit/<int:recipe_id>', methods=['GET', 'POST'])
+@login_required
+def edit_recipe(recipe_id):
+    recipe = Recipe.query.get_or_404(recipe_id)
+
+    if recipe.author != current_user:
+        return "❌ No tienes permiso para editar esta receta", 403
+
+    form = RecipeForm(obj=recipe)
+    form.category.choices = [(c.id, c.name) for c in Category.query.all()]
+
+    if form.validate_on_submit():
+        recipe.title = form.title.data
+        recipe.ingredients = form.ingredients.data
+        recipe.preparation = form.preparation.data
+        recipe.category_id = form.category.data
+
+        if form.image.data:
+            filename = secure_filename(form.image.data.filename)
+            img_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+            form.image.data.save(img_path)
+            recipe.image = filename
+
+        db.session.commit()
+        return redirect(url_for('main.index'))
+
+    return render_template('edit_recipe.html', form=form, recipe=recipe)
+
 @bp.route('/category/<int:cat_id>')
 def category(cat_id):
     cat = Category.query.get_or_404(cat_id)
@@ -56,3 +84,4 @@ def delete_recipe(recipe_id):
     db.session.delete(recipe)
     db.session.commit()
     return redirect(url_for('main.index'))
+

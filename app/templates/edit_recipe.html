@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Editar Receta{% endblock %}
+
+{% block content %}
+  <h2>Editar Receta</h2>
+
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <label>{{ form.title.label }}</label>
+    {{ form.title() }}
+
+    <label>{{ form.ingredients.label }}</label>
+    {{ form.ingredients(rows=4) }}
+
+    <label>{{ form.preparation.label }}</label>
+    {{ form.preparation(rows=5) }}
+
+    <label>{{ form.category.label }}</label>
+    {{ form.category() }}
+
+    <label>{{ form.image.label }}</label>
+    {{ form.image() }}
+
+    {{ form.submit(class_='button') }}
+  </form>
+{% endblock %}

@@ -16,7 +16,10 @@
       <p><strong>Preparación:</strong> {{ receta.preparation }}</p>
 
       {% if receta.author == current_user %}
-        <p><a href="{{ url_for('main.delete_recipe', recipe_id=receta.id) }}">🗑️ Eliminar</a></p>
+        <p>
+          <a href="{{ url_for('main.edit_recipe', recipe_id=receta.id) }}">✏️ Editar</a> |
+          <a href="{{ url_for('main.delete_recipe', recipe_id=receta.id) }}">🗑️ Eliminar</a>
+        </p>
       {% endif %}
     </div>
   {% else %}
